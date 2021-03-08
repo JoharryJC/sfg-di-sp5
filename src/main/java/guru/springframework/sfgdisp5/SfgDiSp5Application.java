@@ -5,15 +5,21 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
 import guru.springframework.sfgdisp5.controllers.ConstructorInjectedController;
+import guru.springframework.sfgdisp5.controllers.I18nController;
 import guru.springframework.sfgdisp5.controllers.MyController;
 import guru.springframework.sfgdisp5.controllers.PropertyInjectedController;
 import guru.springframework.sfgdisp5.controllers.SetterInjectedController;
+import guru.springframework.sfgdisp5.services.I18nEnglishGreetingService;
 
 @SpringBootApplication
 public class SfgDiSp5Application {
 
 	public static void main(String[] args) {
 		ApplicationContext ctx = SpringApplication.run(SfgDiSp5Application.class, args);
+		
+		I18nController i18nController = (I18nController)ctx.getBean("i18nController");
+		System.out.println(i18nController.sayHello());
+		
 		
 		MyController myController = (MyController)ctx.getBean("myController");
 		
